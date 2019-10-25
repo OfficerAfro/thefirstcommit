@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Quotes Here</h1>
+    {% for potato in pasta %}
+    <div class = quoteblock>
+        <h3>{{potato.quoted}}</h3>
+        <p>{{potato.quotetxt}}</p>
+
+        <p><a href="/addfav/{{potato.id}}">Add Favorite</a></p>
+        <p><a href="/viewquote/{{potato.id}}">View</a></p>
+    </div>
+    {% endfor %}
+    <h1>Favorites Here</h1>
+        {% for cheetoes in steak %}
+    <div class = favblock >
+        <h3>{{cheetoes.quoted}}</h3>
+        <p>{{cheetoes.quotetxt}}</p>
+        <p><a href="/deletefav/{{cheetoes.id}}">Remove From Favorites</a></p>
+        
+
+    </div>
+    {% endfor %}
+    <h1>Add Quote</h1>
+    <form action="/addquote" method="post">
+        {% csrf_token %}
+        <p>Quoted From: <input type="text" name="quoter" id=""></p>
+        <p>Quote: <input type="text" name="quotetxt" id=""></p>
+            <input type="submit" value="Add Quote!">
+    </form>
+
+</body>
+</html>
